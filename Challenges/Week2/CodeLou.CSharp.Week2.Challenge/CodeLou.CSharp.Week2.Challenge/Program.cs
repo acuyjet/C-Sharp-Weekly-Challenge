@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 
 namespace CodeLou.CSharp.Week2.Challenge
 {
@@ -70,5 +68,12 @@ namespace CodeLou.CSharp.Week2.Challenge
         {
             return num <= 0;
         }
+
     }
 }
+//TODO: Prevent non-numeric input
+//while{bool isgoodinput}
+//var s=Console.ReadLine()
+//try {defensive code: if isgoodinput = true; break;}
+//catch{error handling}
+

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeLou.CSharp.Week3.Challenge
 {
-    class Attendee
+    public class Attendee
     {
         public string Name { get; set; }
     }
