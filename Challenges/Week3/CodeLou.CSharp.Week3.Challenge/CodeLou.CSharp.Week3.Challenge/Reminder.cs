@@ -2,10 +2,10 @@
 
 namespace CodeLou.CSharp.Week3.Challenge
 {
-	public class Reminder: CalendarItemBase
-	{
+    public class Reminder : CalendarItemBase
+    {
         public override DateTime StartDateTime { get; set; }
-        public override DateTime EndDateTime
+        public DateTime EndDateTime
         {
             get
             {
@@ -18,7 +18,7 @@ namespace CodeLou.CSharp.Week3.Challenge
             }
         }
 
-        public override string Location
+        public string Location
         {
             get
             {

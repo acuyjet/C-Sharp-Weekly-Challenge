@@ -9,7 +9,7 @@ namespace CodeLou.CSharp.Week3.Challenge
     public class Appointments : CalendarItemBase
     {
         public override DateTime StartDateTime { get; set; }
-        public override DateTime EndDateTime { get; set; }
-        public override string Location { get; set; }
+        public DateTime EndDateTime { get; set; }
+        public string Location { get; set; }
     }
 }

@@ -42,6 +42,14 @@ namespace CodeLou.CSharp.Week3.Challenge
         //Could you use inheritance?
         public Reminder FindById(int id)
         {
+            //find id in dictionary
+            foreach (var currentId in _dictionary.Keys)
+            {
+
+            }
+
+            //return reminder corresponding to that id
+
             throw new NotImplementedException();
         }
 
