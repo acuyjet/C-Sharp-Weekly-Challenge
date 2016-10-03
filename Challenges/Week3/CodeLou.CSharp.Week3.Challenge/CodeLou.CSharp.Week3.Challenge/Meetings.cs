@@ -12,6 +12,6 @@ namespace CodeLou.CSharp.Week3.Challenge
         public DateTime EndDateTime { get; set; }
         public string Location { get; set; }
 
-        Attendee attendee = new Attendee();
+        public List<string> Attendees { get; set; }
     }
 }

@@ -45,7 +45,10 @@ namespace CodeLou.CSharp.Week3.Challenge
             //find id in dictionary
             foreach (var currentId in _dictionary.Keys)
             {
-
+                if (_dictionary.ContainsKey(id))
+                {
+                    return _dictionary[id];
+                }
             }
 
             //return reminder corresponding to that id
@@ -55,12 +58,14 @@ namespace CodeLou.CSharp.Week3.Challenge
 
         public Reminder Update(Reminder item)
         {
-            throw new NotImplementedException();
+            _dictionary[item.Id] = item;
+            return item;
         }
 
         public void Delete(Reminder item)
         {
-            throw new NotImplementedException();
+            _dictionary[item.Id] = null;
+
         }
 
         public IEnumerable<Reminder> FindByDate(DateTime date)

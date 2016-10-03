@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeLou.CSharp.Week3.Challenge
 {
-    public class Appointments : CalendarItemBase
+    public class Appointment : CalendarItemBase
     {
         public override DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
