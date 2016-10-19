@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,39 +9,63 @@ namespace CodeLou.CSharp.Week3.Challenge
 {
     class AppointmentRepository : ICalendarItemRepository<Appointment>
     {
+        private readonly Dictionary<int, Appointment> _dictionary;
+
+        public AppointmentRepository()
+        {
+            _dictionary = new Dictionary<int, Appointment>();
+        }
+
         public void Delete(Appointment item)
         {
-            throw new NotImplementedException();
+            _dictionary[item.Id] = null;
         }
 
         public IEnumerable<Appointment> FindByDate(DateTime date)
         {
-            throw new NotImplementedException();
+            return GetAllItems().Where(item => item.StartDateTime.Date == date.Date);
         }
 
         public Appointment FindById(int id)
         {
-            throw new NotImplementedException();
+            //find id in dictionary
+            foreach (var currentId in _dictionary.Keys)
+            {
+                if (_dictionary.ContainsKey(id))
+                {
+                    return _dictionary[id];
+                }
+            }
+
+            //return reminder corresponding to that id
+
+            return _dictionary[id];
         }
 
         public IEnumerable<Appointment> GetAllItems()
         {
-            throw new NotImplementedException();
+            return _dictionary.Values.Cast<Appointment>();
         }
 
         public void LoadFromJson(string json)
         {
-            throw new NotImplementedException();
+            var dictionary = JsonConvert.DeserializeObject<Dictionary<int, Appointment>>(json);
+            foreach (var item in dictionary)
+            {
+                //This will add or update an item
+                _dictionary[item.Key] = item.Value;
+            }
         }
 
         public string ToJson()
         {
-            throw new NotImplementedException();
+            return JsonConvert.SerializeObject(_dictionary, Formatting.Indented);
         }
 
         public Appointment Update(Appointment item)
         {
-            throw new NotImplementedException();
+            _dictionary[item.Id] = item;
+            return item;
         }
     }
 }

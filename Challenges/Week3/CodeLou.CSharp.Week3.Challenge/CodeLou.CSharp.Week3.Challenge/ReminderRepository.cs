@@ -38,7 +38,7 @@ namespace CodeLou.CSharp.Week3.Challenge
             return reminder;
         }
 
-        //Callenge: Are you finding that you are writing this same code many times? Is there a better way? 
+        //Challenge: Are you finding that you are writing this same code many times? Is there a better way? 
         //Could you use inheritance?
         public Reminder FindById(int id)
         {
@@ -53,7 +53,7 @@ namespace CodeLou.CSharp.Week3.Challenge
 
             //return reminder corresponding to that id
 
-            throw new NotImplementedException();
+           return _dictionary[id];
         }
 
         public Reminder Update(Reminder item)
@@ -70,12 +70,13 @@ namespace CodeLou.CSharp.Week3.Challenge
 
         public IEnumerable<Reminder> FindByDate(DateTime date)
         {
-            throw new NotImplementedException();
+            
+            return GetAllItems().Where(item => item.StartDateTime.Date == date.Date);
         }
 
         public IEnumerable<Reminder> GetAllItems()
         {
-            throw new NotImplementedException();
+            return _dictionary.Values.Cast<Reminder>();
         }
 
         public string ToJson()

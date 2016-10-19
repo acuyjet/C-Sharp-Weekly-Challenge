@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="AppointmentRepository.cs" />
     <Compile Include="Appointment.cs" />
-    <Compile Include="Attendee.cs" />
     <Compile Include="CalendarItemBase.cs" />
     <Compile Include="ICalendarItemRepository.cs" />
     <Compile Include="Meetings.cs" />
