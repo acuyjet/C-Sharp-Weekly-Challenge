@@ -35,8 +35,20 @@ namespace CodeLou.CSharp.Week3.Challenge
 			if (File.Exists("Reminders.json")) //Note: these files are created in the same folder as your .exe
 				//Note: What happens when this file is improperly formatted? Can you handle this case?
 				reminderRepository.LoadFromJson(File.ReadAllText("Reminders.json"));
-            
+
             // Hint: var appointmentRepository = new AppointmentRepository(); etc...
+
+            var appointmentRepository = new AppointmentRepository();
+            if (File.Exists("Appointments.json"))
+            {
+                appointmentRepository.LoadFromJson(File.ReadAllText("Appointments.json"));
+            }
+
+            var meetingRepository = new MeetingRepository();
+            if (File.Exists("Meetings.json"))
+            {
+                meetingRepository.LoadFromJson(File.ReadAllText("Meetings.json"));
+            }
 
             // Task 5:
             // Fill in the missing options A, V, F, D for all classes
@@ -72,8 +84,10 @@ namespace CodeLou.CSharp.Week3.Challenge
 						switch (selectedType)
 						{//switch statements require a "break;", be careful not to experience this error
 							case ('A'):
-							case ('M'):
-								throw new NotImplementedException();
+                                var newAppointment = appointmentRepository.Create();
+                                break;
+                            case ('M'):
+                                var newMeeting = meetingRepository.Create();
 								break;
 							case ('R'):
 								var newReminder = reminderRepository.Create();

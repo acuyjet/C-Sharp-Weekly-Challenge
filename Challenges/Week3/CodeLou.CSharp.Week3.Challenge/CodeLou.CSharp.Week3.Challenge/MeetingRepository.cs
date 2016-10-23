@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace CodeLou.CSharp.Week3.Challenge
 {
-    class AppointmentRepository : ICalendarItemRepository<Appointment>
+    class MeetingRepository : ICalendarItemRepository<Meeting>
     {
-        private readonly Dictionary<int, Appointment> _dictionary;
+        private readonly Dictionary<int, Meeting> _dictionary;
 
-        public AppointmentRepository()
+        public MeetingRepository()
         {
-            _dictionary = new Dictionary<int, Appointment>();
+            _dictionary = new Dictionary<int, Meeting>();
         }
 
-        public Appointment Create()
+        public Meeting Create()
         {
             var nextAvailableId = 0;
             foreach (var currentId in _dictionary.Keys)
@@ -29,24 +29,24 @@ namespace CodeLou.CSharp.Week3.Challenge
                 nextAvailableId++;
             }
 
-            var appointment = new Appointment();
-            appointment.Id = nextAvailableId;
-            _dictionary.Add(nextAvailableId, new Appointment());
+            var meeting = new Meeting();
+            meeting.Id = nextAvailableId;
+            _dictionary.Add(nextAvailableId, new Meeting());
 
-            return appointment;
+            return meeting;
         }
 
-        public void Delete(Appointment item)
+        public void Delete(Meeting item)
         {
             _dictionary[item.Id] = null;
         }
 
-        public IEnumerable<Appointment> FindByDate(DateTime date)
+        public IEnumerable<Meeting> FindByDate(DateTime date)
         {
             return GetAllItems().Where(item => item.StartDateTime.Date == date.Date);
         }
 
-        public Appointment FindById(int id)
+        public Meeting FindById(int id)
         {
             //find id in dictionary
             foreach (var currentId in _dictionary.Keys)
@@ -62,14 +62,14 @@ namespace CodeLou.CSharp.Week3.Challenge
             return _dictionary[id];
         }
 
-        public IEnumerable<Appointment> GetAllItems()
+        public IEnumerable<Meeting> GetAllItems()
         {
-            return _dictionary.Values.Cast<Appointment>();
+            return _dictionary.Values.Cast<Meeting>();
         }
 
         public void LoadFromJson(string json)
         {
-            var dictionary = JsonConvert.DeserializeObject<Dictionary<int, Appointment>>(json);
+            var dictionary = JsonConvert.DeserializeObject<Dictionary<int, Meeting>>(json);
             foreach (var item in dictionary)
             {
                 //This will add or update an item
@@ -82,7 +82,7 @@ namespace CodeLou.CSharp.Week3.Challenge
             return JsonConvert.SerializeObject(_dictionary, Formatting.Indented);
         }
 
-        public Appointment Update(Appointment item)
+        public Meeting Update(Meeting item)
         {
             _dictionary[item.Id] = item;
             return item;
